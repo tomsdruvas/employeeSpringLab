@@ -1,6 +1,8 @@
 package com.codeclan.example.employeeTrackingApplication.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,10 +24,16 @@ public class Employee {
     @Column(name = "employeeNumber")
     private String employeeNumber;
 
-    public Employee(String name, int age, String employeeNumber) {
+    @ManyToOne
+    @JoinColumn(name = "department_id", nullable = false)
+    @JsonIgnoreProperties({"employees"})
+    private Department department;
+
+    public Employee(String name, int age, String employeeNumber, Department department) {
         this.name = name;
         this.age = age;
         this.employeeNumber = employeeNumber;
+        this.department = department;
     }
 
     public Employee(){
@@ -62,6 +70,14 @@ public class Employee {
 
     public void setEmployeeNumber(String employeeNumber) {
         this.employeeNumber = employeeNumber;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
 }
