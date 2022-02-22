@@ -2,6 +2,7 @@ package com.codeclan.example.employeeTrackingApplication;
 
 import com.codeclan.example.employeeTrackingApplication.models.Department;
 import com.codeclan.example.employeeTrackingApplication.models.Employee;
+import com.codeclan.example.employeeTrackingApplication.models.Project;
 import com.codeclan.example.employeeTrackingApplication.repositories.DepartmentRepository;
 import com.codeclan.example.employeeTrackingApplication.repositories.EmployeeRepository;
 import com.codeclan.example.employeeTrackingApplication.repositories.ProjectRepository;
@@ -46,6 +47,17 @@ class EmployeeTrackingApplicationTests {
 
 		Employee employee = new Employee("Steve", 43, "AZ1", department);
 		employeeRepository.save(employee);
+		Employee employee1 = new Employee("Dave", 27, "AZ3235345", department);
+		employeeRepository.save(employee1);
+
+		Project project = new Project("Landscaping", 30);
+		projectRepository.save(project);
+
+		project.addEmployee(employee);
+		projectRepository.save(project);
+
+		project.addEmployee(employee1);
+		projectRepository.save(project);
 
 	}
 
