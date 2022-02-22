@@ -47,8 +47,8 @@ class EmployeeTrackingApplicationTests {
 
 		Employee employee = new Employee("Steve", 43, "AZ1", department);
 		employeeRepository.save(employee);
-		Employee employee1 = new Employee("Dave", 27, "AZ3235345", department);
-		employeeRepository.save(employee1);
+		Employee employee2 = new Employee("Dave", 27, "AZ3235345", department);
+		employeeRepository.save(employee2);
 
 		Project project = new Project("Landscaping", 30);
 		projectRepository.save(project);
@@ -56,7 +56,7 @@ class EmployeeTrackingApplicationTests {
 		project.addEmployee(employee);
 		projectRepository.save(project);
 
-		project.addEmployee(employee1);
+		project.addEmployee(employee2);
 		projectRepository.save(project);
 
 	}
