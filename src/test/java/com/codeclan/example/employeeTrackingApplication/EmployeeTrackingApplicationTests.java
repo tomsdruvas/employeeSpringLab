@@ -29,6 +29,9 @@ class EmployeeTrackingApplicationTests {
 
 		Employee employee = new Employee("Carl", 25, "AZ345", department);
 		employeeRepository.save(employee);
+
+		Employee employee1 = new Employee("Dave", 27, "AZ3235345", department);
+		employeeRepository.save(employee1);
 	}
 
 
