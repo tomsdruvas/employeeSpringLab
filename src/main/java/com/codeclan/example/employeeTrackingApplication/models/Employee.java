@@ -22,14 +22,10 @@ public class Employee {
     @Column(name = "employeeNumber")
     private String employeeNumber;
 
-    @Column(name = "email")
-    private String email;
-
-    public Employee(String name, int age, String employeeNumber, String email) {
+    public Employee(String name, int age, String employeeNumber) {
         this.name = name;
         this.age = age;
         this.employeeNumber = employeeNumber;
-        this.email = email;
     }
 
     public Employee(){
@@ -68,11 +64,4 @@ public class Employee {
         this.employeeNumber = employeeNumber;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

@@ -17,7 +17,7 @@ class EmployeeTrackingApplicationTests {
 	}
 
 	@Test public void createEmployee(){
-		Employee employee = new Employee("Carl", 25, "AZ345", "youremail@mail.com");
+		Employee employee = new Employee("Carl", 25, "AZ345");
 		employeeRepository.save(employee);
 	}
 
