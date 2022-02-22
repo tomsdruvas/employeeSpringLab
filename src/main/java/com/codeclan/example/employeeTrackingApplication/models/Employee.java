@@ -2,8 +2,11 @@ package com.codeclan.example.employeeTrackingApplication.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 
@@ -29,11 +32,31 @@ public class Employee {
     @JsonIgnoreProperties({"employees"})
     private Department department;
 
+    @ManyToMany
+    @JsonIgnoreProperties({"employees"})
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "employees_projects",
+            joinColumns = {@JoinColumn(
+                    name = "employee_id",
+                    nullable = false,
+                    updatable = false)
+            },
+            inverseJoinColumns = { @JoinColumn(
+                    name = "project_id",
+                    nullable = false,
+                    updatable = false
+            )
+            }
+    )
+    private List<Project> projects;
+
     public Employee(String name, int age, String employeeNumber, Department department) {
         this.name = name;
         this.age = age;
         this.employeeNumber = employeeNumber;
         this.department = department;
+        this.projects = new ArrayList<>();
     }
 
     public Employee(){
@@ -78,6 +101,10 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public void addProject(Project project){
+        this.projects.add(project);
     }
 
 }
